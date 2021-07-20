@@ -1,0 +1,30 @@
+name: 'AppCenter CLI'
+description: 'AppCenter CLI'
+inputs:
+  API_TOKEN:
+    description: 'API TOKEN'
+    required: true
+  FILE:
+    description: 'File path'
+    required: true
+  ORG_NAME:
+    description: 'Name of the user group'
+    required: true
+  APP_NAME:
+    description: 'Name of the app'
+    required: true
+  GROUP_NAME:
+    description: 'Name of the user group'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/appcenter_cli.sh
+      shell: bash
+      env: 
+        API_TOKEN: ${{ inputs.API_TOKEN }}
+        FILE: ${{ inputs.FILE }}
+        ORG_NAME: ${{ inputs.ORG_NAME }}
+        APP_NAME: ${{ inputs.APP_NAME }}
+        GROUP_NAME: ${{ inputs.GROUP_NAME }}
